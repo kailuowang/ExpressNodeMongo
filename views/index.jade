@@ -1,4 +1,4 @@
-h1= title
+h1#blog-title= title
 p Welcome to #{title}
 .big
   ul
@@ -6,4 +6,5 @@ p Welcome to #{title}
       li
         a(href="post/#{post.id}")
           = post.title
-
+        &nbsp;
+        a(href="post/#{post.id}/del") x

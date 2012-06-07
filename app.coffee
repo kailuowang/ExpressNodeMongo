@@ -25,7 +25,8 @@ app.configure "production", ->
 app.get "/", posts.index
 app.get "/post/new", posts.new
 app.post "/post/new", posts.add
-app.get  "/post/:id", posts.view
+app.get "/post/:id/del", posts.delete
+app.get "/post/:id", posts.view
 
 app.listen 3000, ->
   console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
