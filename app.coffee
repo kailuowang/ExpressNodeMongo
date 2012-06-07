@@ -1,5 +1,6 @@
 express = require("express")
 posts = require("./routes/posts")
+mongoose = require 'mongoose'
 app = module.exports = express.createServer()
 app.configure ->
   app.set "views", __dirname + "/views"
@@ -10,12 +11,15 @@ app.configure ->
   app.use express.static(__dirname + "/public")
 
 app.configure "development", ->
+  mongoose.connect 'mongodb://localhost/coffeepress-dev'
   app.use express.errorHandler(
     dumpExceptions: true
     showStack: true
   )
 
+
 app.configure "production", ->
+  mongoose.connect 'mongodb://localhost/coffeepress-prod'
   app.use express.errorHandler()
 
 app.get "/", posts.index
