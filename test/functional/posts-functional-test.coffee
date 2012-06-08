@@ -33,6 +33,7 @@ describe 'edit', ->
         browser.clickLink deleteBtn
       .then ->
         browser.text('#posts').should.not.include "a test title"
+        null
       .then(done, done)
 
 
