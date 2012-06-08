@@ -1,10 +1,10 @@
 h1#blog-title= title
 p Welcome to #{title}
 .big
-  ul
+  ul#posts
     each post in posts
       li
         a(href="post/#{post.id}")
           = post.title
         &nbsp;
-        a(href="post/#{post.id}/del") x
+        a.delete(href="post/#{post.id}/del") x
