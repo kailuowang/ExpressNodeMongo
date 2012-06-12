@@ -16,6 +16,5 @@
   , "devDependencies": {
     "mocha": "0.10.0"
   , "should": "0.5.1"
-  , "zombie" : ">= 1.3.1"
 }
 }
