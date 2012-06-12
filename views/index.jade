@@ -9,12 +9,11 @@ block append body
     p Welcome to #{title}
     .big
       ul#posts
-      #post-template.hidden
-        li
-          a.post-title
-            {{title}}
-          &nbsp;
-          a.post-delete-btn x
+      li#post-template.hidden
+        a.post-title
+          {{title}}
+        &nbsp;
+        a.post-delete-btn x
 
     #new-post-form.hidden
       include add-post

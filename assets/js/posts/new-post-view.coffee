@@ -8,6 +8,7 @@ class @NewPostView extends Backbone.View
     @blog.create
       title: @$('input#title').val()
       body: @$('textarea#body').val()
+    @hide()
 
   initialize: =>
     @blog = @options.blog

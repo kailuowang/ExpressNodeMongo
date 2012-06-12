@@ -11,6 +11,7 @@ class @BlogView extends Backbone.View
     @newPostView = new NewPostView(el: $('#new-post-form'), blog: @blog)
 
   showNewPost: ->
+    $("#new-post-form form")[0].reset()
     $("#new-post-form").show()
 
   addAll: =>

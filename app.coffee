@@ -1,5 +1,4 @@
 express = require("express")
-posts = require("./routes/posts")
 blogRoutes = require("./routes/blog-routes")
 mongoose = require 'mongoose'
 app = module.exports = express.createServer()
@@ -24,12 +23,7 @@ app.configure "production", ->
   mongoose.connect 'mongodb://localhost/coffeepress-prod'
   app.use express.errorHandler()
 
-app.get "/", posts.index
-app.get "/post/new", posts.new
-app.post "/post/new", posts.add
-app.get "/post/:id/del", posts.delete
-app.get "/post/:id", posts.view
-
+app.get "/", blogRoutes.page
 app.get "/posts", blogRoutes.posts
 app.post "/posts", blogRoutes.add
 app.delete "/posts/:id", blogRoutes.remove

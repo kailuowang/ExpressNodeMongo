@@ -14,3 +14,8 @@ exports.remove = (req, res) ->
     post.remove ->
       res.send "ok"
 
+
+exports.page = (req, res) ->
+  res.render "index",
+    title: "My Test Blog"
+    layout: false
