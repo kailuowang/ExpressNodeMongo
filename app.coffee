@@ -25,11 +25,14 @@ app.configure "production", ->
   app.use express.errorHandler()
 
 app.get "/", posts.index
-app.get "/posts", blogRoutes.posts
 app.get "/post/new", posts.new
 app.post "/post/new", posts.add
 app.get "/post/:id/del", posts.delete
 app.get "/post/:id", posts.view
+
+app.get "/posts", blogRoutes.posts
+app.post "/posts", blogRoutes.add
+app.delete "/posts/:id", blogRoutes.remove
 
 app.listen 3000, ->
   console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env

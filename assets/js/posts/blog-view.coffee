@@ -5,8 +5,10 @@ class @BlogView extends Backbone.View
 
   initialize: ->
     @blog = new Blog
-    @blog.bind('reset', @addAll);
+    @blog.on('reset', @addAll);
+    @blog.on('add', @add);
     @blog.fetch()
+    @newPostView = new NewPostView(el: $('#new-post-form'), blog: @blog)
 
   showNewPost: ->
     $("#new-post-form").show()

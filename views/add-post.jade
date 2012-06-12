@@ -1,4 +1,4 @@
-form(method="post", action="/post/new")
+form
   fieldset
     legend New Post
     .clearfix
@@ -8,8 +8,8 @@ form(method="post", action="/post/new")
     .clearfix
       label(for="post") Post
       .input
-        textarea#post.xxlarge(name="post[body]",rows="3")
+        textarea#body.xxlarge(name="post[body]",rows="3")
     .actions
-      input.btn.primary(type="submit", value="Publish!")
-      |   
-      a.btn(href="/") Cancel
+      a.btn.primary#publish Publish!
+
+      a.btn#cancel Cancel

@@ -1,7 +1,7 @@
-
 class @PostView extends Backbone.View
 
-  tagName: 'li'
+  events:
+    "click .post-delete-btn": "clear"
 
   initialize: ->
     @model.bind 'change', @render, this
@@ -9,7 +9,14 @@ class @PostView extends Backbone.View
     @template = _.template $('#post-template').html()
 
 
-  render: ->
-    @$el.html(@template(@model.toJSON()));
+  render: =>
+    @el = $(@template(@model.toJSON()));
+    @$el = $(@el)
+    @delegateEvents()
     this
+
+  clear: =>
+    @model.destroy()
+
+
 

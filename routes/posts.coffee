@@ -1,11 +1,9 @@
 Post = require '../models/Post'
 
 exports.index = (req, res) ->
-  Post.find {}, (err, posts) ->
-    res.render "index",
-      title: "My Test Blog"
-      posts: posts
-      layout: false
+  res.render "index",
+    title: "My Test Blog"
+    layout: false
 
 exports.new = (req, res) ->
   res.render "add_post",
