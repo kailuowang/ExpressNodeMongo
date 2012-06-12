@@ -1,3 +1,6 @@
+block append head
+  != js('posts/post-view')
+
 h1#blog-title= title
 p Welcome to #{title}
 .big
@@ -8,3 +11,5 @@ p Welcome to #{title}
           = post.title
         &nbsp;
         a.delete(href="post/#{post.id}/del") x
+  #template
+    {{ name }}
