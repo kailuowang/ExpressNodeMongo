@@ -5,6 +5,7 @@ exports.index = (req, res) ->
     res.render "index",
       title: "My Test Blog"
       posts: posts
+      layout: false
 
 exports.new = (req, res) ->
   res.render "add_post",

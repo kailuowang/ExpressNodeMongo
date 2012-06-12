@@ -1,5 +1,6 @@
 express = require("express")
 posts = require("./routes/posts")
+blogRoutes = require("./routes/blog-routes")
 mongoose = require 'mongoose'
 app = module.exports = express.createServer()
 app.configure ->
@@ -24,6 +25,7 @@ app.configure "production", ->
   app.use express.errorHandler()
 
 app.get "/", posts.index
+app.get "/posts", blogRoutes.posts
 app.get "/post/new", posts.new
 app.post "/post/new", posts.add
 app.get "/post/:id/del", posts.delete

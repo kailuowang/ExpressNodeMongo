@@ -1,4 +1,5 @@
-class window.Blog extends Backbone.Collection
+class @Blog extends Backbone.Collection
   model: Post
+  url: '/posts'
 
 
