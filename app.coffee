@@ -29,4 +29,4 @@ app.post "/posts", blogRoutes.add
 app.delete "/posts/:id", blogRoutes.remove
 
 app.listen 3000, ->
-  console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
+  console.log "Express server listening on port %d in %s mode", 3000, app.settings.env
