@@ -1,7 +1,5 @@
 
 class @BlogView extends Backbone.View
-  events:
-    "click #new-post": "showNewPost"
 
   initialize: ->
     @blog = new Blog
@@ -9,10 +7,20 @@ class @BlogView extends Backbone.View
     @blog.on('add', @add);
     @blog.fetch()
     @newPostView = new NewPostView(el: $('#new-post-form'), blog: @blog)
+    @postDetailView = new PostDetailView(el: $('#post'));
+  showNewPost: =>
+    @newPostView.show()
 
-  showNewPost: ->
-    $("#new-post-form form")[0].reset()
-    $("#new-post-form").show()
+  show: =>
+    @newPostView.hide()
+    $('#post-list').show()
+    @postDetailView.hide()
+
+  showPost: (id)=>
+    post = @blog.get id
+    @postDetailView.show(post)
+    @newPostView.hide()
+    $('#post-list').hide()
 
   addAll: =>
     @blog.each @add

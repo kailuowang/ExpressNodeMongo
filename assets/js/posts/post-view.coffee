@@ -12,7 +12,6 @@ class @PostView extends Backbone.View
 
   render: =>
     @$el.html @template(@model.toJSON())
-    @delegateEvents()
     this
 
   clear: =>
