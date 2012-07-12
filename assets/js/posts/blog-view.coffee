@@ -6,21 +6,15 @@ class @BlogView extends Backbone.View
     @blog.on('reset', @addAll);
     @blog.on('add', @add);
     @blog.fetch()
-    @newPostView = new NewPostView(el: $('#new-post-form'), blog: @blog)
-    @postDetailView = new PostDetailView(el: $('#post'));
-  showNewPost: =>
-    @newPostView.show()
+    @newPostView = new NewPostView(el: $('#new-post.section'), blog: @blog)
+    @postDetailView = new PostDetailView(el: $('#post.section'));
 
-  show: =>
-    @newPostView.hide()
-    $('#post-list').show()
-    @postDetailView.hide()
+  show: (path)=>
+    $('.section').hide()
+    $('.section#' + path).show()
 
   showPost: (id)=>
-    post = @blog.get id
-    @postDetailView.show(post)
-    @newPostView.hide()
-    $('#post-list').hide()
+    @postDetailView.show(@blog.get(id))
 
   addAll: =>
     @blog.each @add

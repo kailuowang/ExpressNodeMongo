@@ -1,0 +1,10 @@
+h1#blog-title= title
+p Welcome to #{title}
+.big
+  ul#posts
+  li#post-template.hidden
+    a.post-title(href='#post/{{_id}}')
+      {{title}}
+    &nbsp;
+    a.post-delete-btn
+      i.icon-remove-sign

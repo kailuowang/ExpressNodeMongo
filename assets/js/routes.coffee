@@ -1,16 +1,15 @@
 class WorkSpace extends Backbone.Router
   routes:
     "post/:id": "viewPost"
-    "new-post": "newPost"
-    "":  "showBlog"
+
+  initialize: =>
+    @route(/^([^\/]*)$/, "routeChange");
 
   viewPost: (id) ->
+    @routeChange('post')
     blogView.showPost(id)
 
-  newPost: ->
-    blogView.showNewPost()
-
-  showBlog: ->
-    blogView.show()
+  routeChange: (path)->
+    blogView.show(path)
 
 @router = new WorkSpace

@@ -12,10 +12,7 @@ class @PostDetailView extends Backbone.View
     @model = post
     @model.on 'change', @render, this
     @render()
-    @$el.show()
 
-  hide: =>
-    @$el.hide()
 
 
 

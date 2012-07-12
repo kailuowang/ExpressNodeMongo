@@ -20,12 +20,6 @@ class @NewPostView extends Backbone.View
   initialize: =>
     @blog = @options.blog
 
-  hide: =>
-    @$el.hide()
-
   quit: =>
     @reset()
-    router.navigate "/", trigger: true
-
-  show: =>
-    @$el.show()
+    router.navigate "#", trigger: true

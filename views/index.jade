@@ -5,20 +5,9 @@ block append head
 
 block append body
   #blog-app
-    #post-list
-      h1#blog-title= title
-      p Welcome to #{title}
-      .big
-        ul#posts
-        li#post-template.hidden
-          a.post-title(href='#post/{{_id}}')
-            {{title}}
-          &nbsp;
-          a.post-delete-btn
-            i.icon-remove-sign
-
-      #new-post-form.display-none
-        include add-post
-
-    #post.display-none
+    #post-list.section
+      include post-list
+    #new-post.section
+      include new-post
+    #post.section
       include post
