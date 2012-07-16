@@ -13,6 +13,13 @@ class @BlogView extends Backbone.View
     $('.section').hide()
     $('.section#' + path).show()
 
+    socket = io.connect("http://localhost:3000")
+    socket.on "news", (data) ->
+      console.log data
+      socket.emit "my other event",
+        my: "data"
+
+
   showPost: (id)=>
     @postDetailView.show(@blog.get(id))
 

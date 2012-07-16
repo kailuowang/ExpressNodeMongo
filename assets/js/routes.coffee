@@ -10,6 +10,7 @@ class WorkSpace extends Backbone.Router
     blogView.showPost(id)
 
   routeChange: (path)->
+    path = 'post-list' if path is ''
     blogView.show(path)
 
 @router = new WorkSpace
