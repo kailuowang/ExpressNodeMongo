@@ -9,3 +9,5 @@ Example Coffeescript project for the following stack
 + node.js
 + mongoose
 + mongodb
+
+It's a simple blog app with which you can add/remove blog posts. The total number of posts is updated through websocket. 
