@@ -6,18 +6,22 @@ class @BlogView extends Backbone.View
     @blog.on('reset', @addAll);
     @blog.on('add', @add);
     @blog.fetch()
+
     @newPostView = new NewPostView(el: $('#new-post.section'), blog: @blog)
     @postDetailView = new PostDetailView(el: $('#post.section'));
+    @registerSocket()
 
   show: (path)=>
     $('.section').hide()
     $('.section#' + path).show()
 
+
+  registerSocket: =>
     socket = io.connect("http://localhost:3000")
-    socket.on "news", (data) ->
-      console.log data
-      socket.emit "my other event",
-        my: "data"
+    socket.on "posts-count-changed", @setCount
+
+  setCount: (count) =>
+    $('#count').text(count)
 
 
   showPost: (id)=>
@@ -25,6 +29,7 @@ class @BlogView extends Backbone.View
 
   addAll: =>
     @blog.each @add
+    @setCount(@blog.length)
 
   add: (post) =>
     postView = new PostView(model: post)

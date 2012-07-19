@@ -1,7 +1,7 @@
 express = require("express")
 blogRoutes = require("./routes/blog-routes")
 mongoose = require 'mongoose'
-sockets = require "./routes/socket-routes"
+socketRoutes = require "./routes/socket-routes"
 
 app = module.exports = express()
 app.configure ->
@@ -36,4 +36,7 @@ server = app.listen 3000, ->
 
 io = require('socket.io').listen(server)
 
-io.sockets.on 'connection', sockets.events
+io.sockets.on 'connection', socketRoutes.registerEvents
+
+{EventEmitter} = require('events')
+global.broadcaster = new EventEmitter
