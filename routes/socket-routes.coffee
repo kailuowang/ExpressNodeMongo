@@ -1,3 +1,3 @@
-exports.registerEvents = (socket) ->
+exports.setup = (socket) ->
   global.broadcaster.on "posts-count-changed", (count) ->
     socket.emit "posts-count-changed", count

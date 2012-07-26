@@ -20,23 +20,18 @@ app.configure "development", ->
     showStack: true
   )
 
-
 app.configure "production", ->
   mongoose.connect 'mongodb://localhost/coffeepress-prod'
   app.use express.errorHandler()
 
-app.get "/", blogRoutes.page
-app.get "/posts", blogRoutes.posts
-app.post "/posts", blogRoutes.add
-app.delete "/posts/:id", blogRoutes.remove
-
+blogRoutes.setup app
 
 server = app.listen 3000, ->
   console.log "Express server listening on port %d in %s mode", 3000, app.settings.env
 
 io = require('socket.io').listen(server)
 
-io.sockets.on 'connection', socketRoutes.registerEvents
+io.sockets.on 'connection', socketRoutes.setup
 
 {EventEmitter} = require('events')
 global.broadcaster = new EventEmitter
